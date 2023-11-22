@@ -9,8 +9,8 @@
       <div id="mainContent" class="xs:absolute xs:z-10 md:static grow h-full xs:w-full md:w-fit scrollbar-hidden bg-white dark:bg-gray-800 transition-all duration-500"
         :class=" getConversationOpen === 'open' ? ['xs:left-[0px]', 'xs:static'] : ['xs:left-[1000px]'] " role="region">
         <Transition name="fade" mode="out-in">
-          <!-- <NoChatSelected></NoChatSelected> -->
-          <component :is="activeComponent"  :key="getActiveConversationId" />
+          <NoChatSelected></NoChatSelected>
+          <!-- <component :is="activeComponent"  :key="getActiveConversationId" /> -->
         </Transition>
       </div>
     </div>

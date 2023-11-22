@@ -1,6 +1,5 @@
 <template>
     <MSidebarHeader>
-      test
       <template v-slot:title>Messages</template>
 
       <template v-slot:actions>
@@ -11,7 +10,6 @@
     </MSidebarHeader>
 
     <div class="px-5 text-black bg-slate-600">
-      test
       <SearchInput v-model="keyword" />
     </div>
 
@@ -31,8 +29,7 @@
       </div>
     </div>
 
-    <!--compose modal-->
-    <ComposeModal :open="composeOpen" :close-modal="closeComposeModal" />
+    <!-- <ComposeModal :open="composeOpen" :close-modal="closeComposeModal" /> -->
 
 </template>
 
@@ -74,15 +71,15 @@
         composeOpen: false,
         openArchive: false,
         filteredConversations: [],
+        archive: [],
         conversation: [],
       };
     },
 
     mounted() {
-      this.filteredConversations = this.getConversations();
-
-      this.conversation = this.getArchive.find((conversation) => conversation.id === this.getActiveConversationId);
-
+      this.filteredConversations = this.getConversations;
+      this.archive = this.getArchive
+      this.conversation = this.archive.find(this.isActiveConversationId);
       if (this.conversation) {
         this.openArchive = true
       };
@@ -94,6 +91,10 @@
         'setConversationOpen',
         'setActiveConversationId',
       ]),
+
+      isActiveConversationId(conversation) {
+        return conversation.id === this.getActiveConversationId;
+      },
 
       handleConversationChange(conversationId) {
         this.setActiveConversationId = conversationId;

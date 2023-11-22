@@ -1,19 +1,17 @@
 <template>
   <aside class="xs:w-full md:w-[290px] h-full xs:px-5 md:p-0 flex flex-col overflow-visible transition-all duration-500">
-    <FadeTransition>
-      <component :is="ActiveComponent" class="h-full flex flex-col" />
-    </FadeTransition>
+  
+      <component :is="activeComponent" class="h-full flex flex-col" />
+
   </aside>
 </template>
 
 <script>
 
-  import FadeTransition from "@/components/dashboard/messenger/base/transitions/FadeTransition.vue";
-  
-  import Calls          from "@/components/dashboard/messenger/sidebar/calls/MSidebar-Calls.vue";
-  import Contacts       from "@/components/dashboard/messenger/sidebar/contacts/MSidebar-Contacts.vue";
   import Conversations  from "@/components/dashboard/messenger/sidebar/conversations/MSidebar-Conversations.vue";
+  import Contacts       from "@/components/dashboard/messenger/sidebar/contacts/MSidebar-Contacts.vue";
   import Notifications  from "@/components/dashboard/messenger/sidebar/notifications/MSidebar-Notifications.vue";
+  import Calls          from "@/components/dashboard/messenger/sidebar/calls/MSidebar-Calls.vue";
   import Settings       from "@/components/dashboard/messenger/sidebar/settings/MSidebar-Settings.vue";
 
   import { mapState }           from 'pinia';
@@ -22,7 +20,6 @@
   export default {
 
     components: {
-      FadeTransition,
       Calls,
       Contacts,
       Conversations,
@@ -32,6 +29,7 @@
 
     data() {
       return {
+        activeComponent: 'Conversations',
       };
     },
   
@@ -46,23 +44,32 @@
     methods: {
 
       // the selected sidebar component (e.g message/notifications/settings)
-      ActiveComponent() {
+      activeComponentChange() {
         console.log('test')
         console.log(this.getActiveSidebarComponent);
         if (this.getActiveSidebarComponent === "messages") {
-          return 'Conversations';
+          this.activeComponent = 'Conversations';
         } else if (this.getActiveSidebarComponent === "contacts") {
-          return 'Contacts';
+          this.activeComponent = 'Contacts';
         } else if (this.getActiveSidebarComponent === "notifications") {
-          return 'Notifications';
+          this.activeComponent = 'Notifications';
         } else if (this.getActiveSidebarComponent === "phone") {
-          return 'Calls';
+          this.activeComponent = 'Calls';
         } else if (this.getActiveSidebarComponent === "settings") {
-          return 'Settings';
+          this.activeComponent = 'Settings';
         }
       },
 
     },
+
+    watch: {
+      getActiveSidebarComponent: {
+        handler() {
+          this.activeComponentChange();
+        },
+        deep: true
+      },
+    }
 
   }
 </script>

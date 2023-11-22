@@ -17,8 +17,6 @@
       </nav>
     </div>
 
-    
-
     <div>
 
       <hr class="xs:hidden md:block mb-6 border-gray-100 dark:border-gray-600" />
