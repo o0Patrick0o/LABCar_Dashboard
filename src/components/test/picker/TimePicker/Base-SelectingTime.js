@@ -1,0 +1,9 @@
+var SelectingTimes
+
+;(function(SelectingTimes) {
+  SelectingTimes[(SelectingTimes["Hour"] = 1)] = "Hour"
+  SelectingTimes[(SelectingTimes["Minute"] = 2)] = "Minute"
+  SelectingTimes[(SelectingTimes["Second"] = 3)] = "Second"
+})(SelectingTimes || (SelectingTimes = {}))
+
+export { SelectingTimes }

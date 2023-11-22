@@ -1,0 +1,1 @@
+export { VTextarea } from './originale/VTextarea'

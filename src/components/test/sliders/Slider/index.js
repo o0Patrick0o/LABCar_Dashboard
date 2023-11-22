@@ -1,0 +1,1 @@
+export { VSlider } from './originale/VSlider'
